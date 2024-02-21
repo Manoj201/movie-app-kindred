@@ -17,7 +17,7 @@ const movieSlice = createSlice({
     name: 'movie',
     initialState,
     reducers: {
-        getMovieList: (state, action: PayloadAction<MovieSearchRequest>) => {
+        getMovieList: (state, _action: PayloadAction<MovieSearchRequest>) => {
             state.movieListLoading = true;
             state.movieListError = false;
         },
@@ -32,7 +32,7 @@ const movieSlice = createSlice({
             state.movieListError = true;
         },
 
-        getMovieDetail: (state, action: PayloadAction<string>) => {
+        getMovieDetail: (state, _action: PayloadAction<string>) => {
             state.movieDetailLoading = true;
             state.movieDetailError = false;
         },
