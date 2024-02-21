@@ -29,12 +29,11 @@ jobs:
                   # Node version. Run "node -v" to check the latest version
                   node-version: 18.x
                   registry-url: https://registry.npmjs.org/
-            - name: Deploy React App
+            - name: Build React App
               run: |
                   rm -rf node_modules
-                  rm -rf yarn.lock
                   yarn
-                  yarn build
+                  yarn build-prod
             - name: Deploy React App
               uses: JamesIves/github-pages-deploy-action@v4
               with:
