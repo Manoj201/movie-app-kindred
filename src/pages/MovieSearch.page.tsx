@@ -1,6 +1,5 @@
 import { SearchPanel } from '@components/index';
 import { Grid } from '@mui/material';
-import { movieActions } from '@store/movie.slice';
 import { RootState } from '@store/rootStore';
 
 import React, { useEffect } from 'react';
@@ -14,6 +13,7 @@ const MovieSearchPage: React.FC = () => {
     console.log(movieList);
 
     useEffect(() => {
+        console.log('MovieSearchPage');
         // dispatch(movieActions.getMovieList({ search: 'batman', year: '', page: '1' }));
         // dispatch(movieActions.getMovieDetail('tt0372784'));
     }, [dispatch]);
