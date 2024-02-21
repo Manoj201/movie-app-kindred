@@ -1,0 +1,15 @@
+{
+    "translation": {
+        "app": "App English",
+        "layout": {
+            "header": "Welcome To Movie Finder",
+            "language": "Select Language"
+        },
+        "search": {
+            "movieNameField": "Search Movie",
+            "yearField": "Search Year",
+            "clear": "Clear Search",
+            "info": "Note: This search will be performed on demand with debounce"
+        }
+    }
+}

@@ -1,0 +1,15 @@
+{
+    "translation": {
+        "app": "App Swedish",
+        "layout": {
+            "header": "Välkommen till Movie Finder",
+            "language": "Välj Språk"
+        },
+        "search": {
+            "movieNameField": "Sök film",
+            "yearField": "Sökår",
+            "clear": "Rensa sökning",
+            "info": "Obs: Denna sökning kommer att utföras på begäran med studs"
+        }
+    }
+}
