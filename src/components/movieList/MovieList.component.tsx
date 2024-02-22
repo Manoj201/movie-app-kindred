@@ -1,5 +1,6 @@
 import { ROUTES } from '@constants/index';
-import { Box, Grid, Paper, Typography } from '@mui/material';
+import useWindowDimensions from '@hooks/UseWindowDimensions.hook';
+import { Box, Grid, Paper, Theme, Typography } from '@mui/material';
 
 import { RootState } from '@store/rootStore';
 import { colors } from '@theme/index';
@@ -9,6 +10,7 @@ import { useNavigate } from 'react-router-dom';
 
 const MovieList: React.FC = () => {
     const navigate = useNavigate();
+    const { height } = useWindowDimensions();
 
     const movieList = useSelector((state: RootState) => state.movie.movieList);
     const currentPage = useSelector((state: RootState) => state.movie.curruntPage);
@@ -19,9 +21,28 @@ const MovieList: React.FC = () => {
 
     return (
         <>
-            <Grid container spacing={2}>
+            <Grid
+                container
+                spacing={2}
+                sx={{
+                    height: `${height - 350}px`,
+                    overflow: 'scroll',
+                    marginTop: '5px',
+                }}
+            >
                 {movieList[`${currentPage}`]?.map((movie, index) => (
-                    <Grid key={index} item xs={12} lg={6}>
+                    <Grid
+                        key={index}
+                        item
+                        xs={12}
+                        lg={6}
+                        sx={(theme: Theme) => ({
+                            [theme.breakpoints.only('xs')]: {
+                                marginRight: '20px',
+                                marginLeft: '20px',
+                            },
+                        })}
+                    >
                         <Paper
                             sx={{
                                 padding: '15px',
@@ -36,7 +57,7 @@ const MovieList: React.FC = () => {
                             elevation={10}
                             onClick={() => handleClickMovie(movie.imdbID)}
                         >
-                            <Box sx={{ display: 'flex', justifyContent: 'flex-start' }}>
+                            <Box sx={{ display: 'flex', justifyContent: 'flex-start', height: 'auto' }}>
                                 <img
                                     src={movie.Poster}
                                     alt={movie.Title}
@@ -51,6 +72,11 @@ const MovieList: React.FC = () => {
                                         sx={{
                                             fontSize: '22px',
                                             fontWeight: 'bold',
+                                            overflow: 'hidden',
+                                            textOverflow: 'ellipsis',
+                                            display: '-webkit-box',
+                                            WebkitLineClamp: '2',
+                                            WebkitBoxOrient: 'vertical',
                                         }}
                                     >
                                         {movie.Title}
@@ -69,6 +95,13 @@ const MovieList: React.FC = () => {
                         </Paper>
                     </Grid>
                 ))}
+                <Box
+                    sx={(theme: Theme) => ({
+                        [theme.breakpoints.only('xs')]: {
+                            height: '150px',
+                        },
+                    })}
+                />
             </Grid>
         </>
     );

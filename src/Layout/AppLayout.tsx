@@ -7,6 +7,7 @@ import {
     MenuItem,
     Select,
     SelectChangeEvent,
+    Theme,
     Typography,
 } from '@mui/material';
 import { colors, labelSizes, labelWeights } from '@theme/index';
@@ -40,7 +41,17 @@ const AppLayout: React.FC = () => {
                             paddingBottom: '20px',
                         }}
                     >
-                        <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+                        <Box
+                            sx={(theme: Theme) => ({
+                                display: 'flex',
+                                flexDirection: 'row',
+                                alignItems: 'center',
+                                [theme.breakpoints.only('xs')]: {
+                                    flexDirection: 'column',
+                                    alignItems: 'flex-start',
+                                },
+                            })}
+                        >
                             <Typography
                                 sx={{
                                     color: colors.light,
@@ -54,14 +65,17 @@ const AppLayout: React.FC = () => {
                                 <Button
                                     startIcon={<HomeIcon sx={{ color: colors.white }} />}
                                     size="small"
-                                    sx={{
+                                    sx={(theme: Theme) => ({
                                         backgroundColor: colors.primary,
                                         color: colors.light,
                                         fontWeight: labelWeights.bold,
                                         borderRadius: '20px',
                                         width: '110px',
                                         marginLeft: '20px',
-                                    }}
+                                        [theme.breakpoints.only('xs')]: {
+                                            marginLeft: '0px',
+                                        },
+                                    })}
                                     onClick={() => {
                                         navigate('/movies', { replace: true });
                                     }}

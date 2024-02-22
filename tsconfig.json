@@ -31,6 +31,7 @@
             "@routes/*": ["./src/routes/*"],
             "@store/*": ["./src/store/*"],
             "@theme/*": ["./src/theme/*"],
+            "@hooks/*": ["./src/hooks/*"],
             "@app-types/*": ["src/types/*"]
         }
     },

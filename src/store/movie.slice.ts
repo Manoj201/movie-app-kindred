@@ -50,6 +50,7 @@ const movieSlice = createSlice({
         },
 
         getMovieDetail: (state, _action: PayloadAction<string>) => {
+            state.movieDetail = null;
             state.movieDetailLoading = true;
             state.movieDetailError = false;
         },
