@@ -6,7 +6,7 @@ import AppLayout from 'src/Layout/AppLayout';
 
 const MainRoute: React.FC = () => {
     return (
-        <BrowserRouter>
+        <BrowserRouter basename="/movie-app-kindred">
             <Routes>
                 <Route path="/" element={<Navigate to={ROUTES.MOVIE_SERACH_PAGE} />} />
                 <Route element={<AppLayout />}>
