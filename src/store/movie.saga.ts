@@ -18,6 +18,7 @@ function* watchGetMovieList(
         if (response.Response === 'True') {
             yield put(movieActions.getMovieListSuccess({ ...response, page: action.payload.page }));
         } else {
+            yield put(movieActions.getMovieListError());
             Notification('Oops!', response.Error, ToastType.Error);
         }
     } catch (error) {

@@ -7,6 +7,7 @@ import { colors } from '@theme/index';
 
 import { useSelector } from 'react-redux';
 import { CachedImage } from '@components/index';
+import { styled } from '@mui/system';
 
 const MovieDetail = () => {
     const { height } = useWindowDimensions();
@@ -40,41 +41,32 @@ const MovieDetail = () => {
                         </Grid>
                         <Grid item xs={12} md={8}>
                             <Box sx={{ marginLeft: '20px' }}>
-                                <Typography variant="h4" sx={{ color: colors.white, fontWeight: '600' }}>
+                                <DetailLabel variant="h4" weight="600">
                                     {movie.Title} ( {movie.Year} )
-                                </Typography>
-                                <Typography variant="h6" sx={{ color: colors.white, fontWeight: '600' }}>
+                                </DetailLabel>
+                                <DetailLabel variant="h6" weight="600">
                                     {movie.Genre}
-                                </Typography>
-                                <Typography
-                                    variant="body1"
-                                    sx={{ color: colors.white, fontWeight: '400', marginTop: '30px' }}
-                                >
+                                </DetailLabel>
+                                <DetailLabel variant="body1" weight="400" top="30px">
                                     {movie.Plot}
-                                </Typography>
+                                </DetailLabel>
 
-                                <Typography
-                                    variant="body1"
-                                    sx={{ color: colors.white, fontWeight: '400', marginTop: '30px' }}
-                                >
+                                <DetailLabel variant="body1" weight="400" top="30px">
                                     Director : {movie.Director}
-                                </Typography>
-                                <Typography variant="body1" sx={{ color: colors.white, fontWeight: '400' }}>
+                                </DetailLabel>
+                                <DetailLabel variant="body1" weight="400">
                                     Writer : {movie.Writer}
-                                </Typography>
-                                <Typography
-                                    variant="body1"
-                                    sx={{ color: colors.white, fontWeight: '400', marginTop: '20px' }}
-                                >
+                                </DetailLabel>
+                                <DetailLabel variant="body1" weight="400" top="30px">
                                     Actors : {movie.Actors}
-                                </Typography>
-                                <Typography variant="body1" sx={{ color: colors.white, fontWeight: '400' }}>
+                                </DetailLabel>
+                                <DetailLabel variant="body1" weight="400">
                                     Released : {movie.Released}
-                                </Typography>
+                                </DetailLabel>
                                 <Box sx={{ display: 'flex', marginTop: '20px', flexDirection: 'column' }}>
-                                    <Typography variant="body1" sx={{ color: colors.white }}>
+                                    <DetailLabel variant="body1">
                                         IMDB {movie.imdbRating} /10 votes ( {movie.imdbVotes} )
-                                    </Typography>
+                                    </DetailLabel>
                                     <Rating name="read-only" value={parseFloat(movie.imdbRating)} readOnly max={10} />
                                 </Box>
                             </Box>
@@ -91,3 +83,11 @@ const MovieDetail = () => {
 };
 
 export default MovieDetail;
+
+const DetailLabel = styled(Typography)(({ weight, top }: { weight?: string; top?: string }) => ({
+    fontWeight: weight,
+    letterSpacing: '0.4px',
+    color: colors.white,
+    marginTop: top ?? undefined,
+    marginBottom: '10px',
+}));

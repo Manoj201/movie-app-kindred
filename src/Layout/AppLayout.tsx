@@ -27,7 +27,7 @@ const AppLayout: React.FC = () => {
 
     return (
         <>
-            <Grid container justifyContent="center" sx={{ backgroundColor: colors.dark, paddingTop: '5px' }}>
+            <Grid container justifyContent="center" sx={{ backgroundColor: colors.dark, padding: '10px 20px' }}>
                 <Grid item xs={12} lg={6}>
                     <Box
                         sx={{
