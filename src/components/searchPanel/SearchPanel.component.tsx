@@ -59,6 +59,7 @@ const SearchPanel: React.FC<SearchPanelProps> = () => {
                         size="small"
                         onChange={(event: React.ChangeEvent<HTMLInputElement>) => onChangeField(event, 'movieName')}
                         value={searchFormValues.movieName}
+                        autoComplete="off"
                     />
                 </Grid>
                 <Grid item xs={12} sm={4}>
@@ -68,6 +69,7 @@ const SearchPanel: React.FC<SearchPanelProps> = () => {
                         variant="outlined"
                         size="small"
                         onChange={(event: React.ChangeEvent<HTMLInputElement>) => onChangeField(event, 'year')}
+                        autoComplete="off"
                         value={searchFormValues.year}
                     />
                 </Grid>
