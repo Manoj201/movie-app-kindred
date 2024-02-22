@@ -7,8 +7,8 @@
             "home": "Home"
         },
         "search": {
-            "movieNameField": "Search Movie",
-            "yearField": "Search Year",
+            "movieNameField": "Movie",
+            "yearField": "Year",
             "clear": "Clear",
             "info": "Note: This search will be performed on demand with debounce"
         }

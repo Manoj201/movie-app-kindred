@@ -1,8 +1,8 @@
 import React, { useMemo } from 'react';
-import { Button, Grid, Paper, TextField, Box, Typography } from '@mui/material';
+import { Button, Grid, Paper, TextField, Box } from '@mui/material';
 import { debounce } from 'lodash';
 import { styled } from '@mui/system';
-import { colors, labelWeights } from '@theme/index';
+import { colors } from '@theme/index';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import { movieActions } from '@store/movie.slice';
@@ -50,8 +50,8 @@ const SearchPanel: React.FC<SearchPanelProps> = () => {
 
     return (
         <Container elevation={0}>
-            <Grid container spacing={2} justifyContent="center" alignItems="center">
-                <Grid item xs={12} sm={6}>
+            <Grid container spacing={1} justifyContent="flex-start" alignItems="center">
+                <Grid item xs={5} sm={6}>
                     <TextField
                         fullWidth
                         label={t('search.movieNameField')}
@@ -62,7 +62,7 @@ const SearchPanel: React.FC<SearchPanelProps> = () => {
                         autoComplete="off"
                     />
                 </Grid>
-                <Grid item xs={12} sm={4}>
+                <Grid item xs={4} sm={4}>
                     <TextField
                         fullWidth
                         label={t('search.yearField')}
@@ -73,7 +73,7 @@ const SearchPanel: React.FC<SearchPanelProps> = () => {
                         value={searchFormValues.year}
                     />
                 </Grid>
-                <Grid item xs={12} sm={2}>
+                <Grid item xs>
                     <ButtonWrapper>
                         <StyledButton variant="contained" background={colors.secondary} onClick={handelClear}>
                             {t('search.clear')}
@@ -81,11 +81,6 @@ const SearchPanel: React.FC<SearchPanelProps> = () => {
                     </ButtonWrapper>
                 </Grid>
             </Grid>
-            <Typography
-                sx={{ color: colors.white, fontSize: '14px', fontWeight: labelWeights.bold, marginTop: '10px' }}
-            >
-                {t('search.info')}
-            </Typography>
         </Container>
     );
 };
@@ -93,9 +88,10 @@ const SearchPanel: React.FC<SearchPanelProps> = () => {
 export default SearchPanel;
 
 const Container = styled(Paper)({
-    padding: '30px',
+    padding: '8px',
     backgroundColor: colors.grey,
     border: `1px solid ${colors.secondary}`,
+    borderRadius: '10px',
 });
 
 const ButtonWrapper = styled(Box)({

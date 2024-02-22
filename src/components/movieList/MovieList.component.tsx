@@ -25,7 +25,7 @@ const MovieList: React.FC = () => {
                 container
                 spacing={2}
                 sx={{
-                    height: `${height - 350}px`,
+                    height: `${height - 290}px`,
                     overflow: 'scroll',
                     marginTop: '5px',
                 }}
@@ -50,6 +50,7 @@ const MovieList: React.FC = () => {
                                 border: `2px solid ${colors.green}`,
                                 borderRadius: '10px',
                                 cursor: 'pointer',
+                                width: '100%',
                                 '&:hover': {
                                     backgroundColor: colors.darkGrey,
                                 },

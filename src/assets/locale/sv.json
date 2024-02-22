@@ -7,8 +7,8 @@
             "home": "Hem"
         },
         "search": {
-            "movieNameField": "Sök film",
-            "yearField": "Sökår",
+            "movieNameField": "film",
+            "yearField": "år",
             "clear": "Rensa",
             "info": "Obs: Denna sökning kommer att utföras på begäran med studs"
         }
