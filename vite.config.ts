@@ -6,5 +6,5 @@ import tsconfigPaths from 'vite-tsconfig-paths';
 export default defineConfig({
     plugins: [tsconfigPaths(), react()],
     envDir: './env',
-    base: '/movie-app-kindred',
+    base: '/movie-app-kindred/',
 });
