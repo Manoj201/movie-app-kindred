@@ -23,4 +23,5 @@ yarn dev
 -   React Router V6
 -   Redux Saga with Redux Toolkit
 -   Axios
+-   i18n
 -   GitHub Actions for Github pages deployment
