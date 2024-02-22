@@ -2,7 +2,7 @@
     "translation": {
         "app": "App Swedish",
         "layout": {
-            "header": "Välkommen till Movie Finder",
+            "header": "Movie Finder",
             "language": "Välj Språk",
             "home": "Hem"
         },

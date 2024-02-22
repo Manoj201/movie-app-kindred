@@ -1,8 +1,9 @@
 import { CallEffect, PutEffect, call, put, takeLatest } from 'redux-saga/effects';
 import { movieActions } from '@store/movie.slice';
 import MovieApi from '@api/MovieApi';
-import { MovieSearchResponse, MovieSearchRequest, MovieDetails } from '@app-types/index';
+import { MovieSearchResponse, MovieSearchRequest, MovieDetails, ToastType } from '@app-types/index';
 import { AnyAction } from '@redux-saga/core';
+import Notification from '@components/notification/Notification.component';
 
 function* watchGetMovieList(
     action: ReturnType<typeof movieActions.getMovieList>,
@@ -16,6 +17,8 @@ function* watchGetMovieList(
         );
         if (response.Response === 'True') {
             yield put(movieActions.getMovieListSuccess({ ...response, page: action.payload.page }));
+        } else {
+            Notification('Oops!', response.Error, ToastType.Error);
         }
     } catch (error) {
         yield put(movieActions.getMovieListError());

@@ -3,11 +3,26 @@ import { styled } from '@mui/system';
 import MainRoute from '@routes/MainRoutes';
 import React from 'react';
 
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const App: React.FC = () => {
     return (
         <GradientWrapper>
             <AppContainer>
                 <MainRoute />
+                <ToastContainer
+                    position="top-right"
+                    autoClose={3000}
+                    hideProgressBar
+                    newestOnTop
+                    closeOnClick
+                    rtl={false}
+                    draggable
+                    pauseOnHover
+                    theme="light"
+                    closeButton={false}
+                />
             </AppContainer>
         </GradientWrapper>
     );

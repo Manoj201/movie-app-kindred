@@ -14,3 +14,39 @@ body {
     display: flex;
     min-height: 100vh;
 }
+
+.custom-error-toast {
+    border-radius: 16px !important;
+    background-color: rgba(236, 76, 41, 0.9) !important;
+    width: 320px !important;
+    padding: 8px 16px;
+
+    @media screen and (max-width: 480px) {
+        width: 100% !important;
+        border-radius: 0 !important;
+    }
+}
+
+.custom-success-toast {
+    border-radius: 16px !important;
+    background-color: rgba(180, 215, 75, 0.9) !important;
+    width: 320px !important;
+    padding: 8px 16px;
+
+    @media screen and (max-width: 480px) {
+        width: 100% !important;
+        border-radius: 0 !important;
+    }
+}
+
+.custom-warn-toast {
+    border-radius: 16px !important;
+    background-color: rgba(236, 158, 41, 0.9) !important;
+    width: 320px !important;
+    padding: 8px 16px;
+
+    @media screen and (max-width: 480px) {
+        width: 100% !important;
+        border-radius: 0 !important;
+    }
+}

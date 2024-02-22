@@ -43,6 +43,7 @@ interface MovieSearchResponse {
     totalResults: string;
     Response: string;
     page: string;
+    Error: string;
 }
 
 interface MovieSearchRequest {
@@ -63,6 +64,12 @@ interface MovieState {
     movieDetail: MovieDetails | null;
     movieDetailLoading: boolean;
     movieDetailError: boolean;
+}
+
+export enum ToastType {
+    Success,
+    Warn,
+    Error,
 }
 
 export type { Movie, MovieState, MovieSearchResponse, MovieSearchRequest, MovieDetails, FormvalueType };

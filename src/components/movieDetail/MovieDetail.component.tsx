@@ -1,9 +1,12 @@
-import useWindowDimensions from '@hooks/UseWindowDimensions.hook';
+import React from 'react';
 import { Box, Paper, Typography, Rating, CircularProgress, Grid, Theme } from '@mui/material';
+
+import useWindowDimensions from '@hooks/UseWindowDimensions.hook';
 import { RootState } from '@store/rootStore';
 import { colors } from '@theme/index';
-import React from 'react';
+
 import { useSelector } from 'react-redux';
+import { CachedImage } from '@components/index';
 
 const MovieDetail = () => {
     const { height } = useWindowDimensions();
@@ -33,9 +36,7 @@ const MovieDetail = () => {
                         sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'flex-start' }}
                     >
                         <Grid item xs={12} md={4} sx={{ justifyContent: 'center', alignItems: 'center' }}>
-                            <Box>
-                                <img src={movie.Poster} alt={movie.Title} style={{ width: '100%' }} />
-                            </Box>
+                            <CachedImage src={movie.Poster} width="100%" height="100%" />
                         </Grid>
                         <Grid item xs={12} md={8}>
                             <Box sx={{ marginLeft: '20px' }}>
