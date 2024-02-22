@@ -3,12 +3,13 @@
         "app": "App Swedish",
         "layout": {
             "header": "Välkommen till Movie Finder",
-            "language": "Välj Språk"
+            "language": "Välj Språk",
+            "home": "Hem"
         },
         "search": {
             "movieNameField": "Sök film",
             "yearField": "Sökår",
-            "clear": "Rensa sökning",
+            "clear": "Rensa",
             "info": "Obs: Denna sökning kommer att utföras på begäran med studs"
         }
     }

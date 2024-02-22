@@ -3,12 +3,13 @@
         "app": "App English",
         "layout": {
             "header": "Welcome To Movie Finder",
-            "language": "Select Language"
+            "language": "Select Language",
+            "home": "Home"
         },
         "search": {
             "movieNameField": "Search Movie",
             "yearField": "Search Year",
-            "clear": "Clear Search",
+            "clear": "Clear",
             "info": "Note: This search will be performed on demand with debounce"
         }
     }

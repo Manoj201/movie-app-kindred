@@ -14,12 +14,16 @@ import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 
 import '@config/i18n.ts';
+import { ThemeProvider } from '@mui/material';
+import { baseTheme } from '@theme/index.ts';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
     <React.Fragment>
-        <CssBaseline />
         <Provider store={store}>
-            <App />
+            <ThemeProvider theme={baseTheme}>
+                <CssBaseline />
+                <App />
+            </ThemeProvider>
         </Provider>
     </React.Fragment>,
 );

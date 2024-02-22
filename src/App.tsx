@@ -5,28 +5,27 @@ import React from 'react';
 
 const App: React.FC = () => {
     return (
-        <AppContainer>
-            {/* <Box>
-                <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
-                    <InputLabel id="demo-simple-select-standard-label">Select Language</InputLabel>
-                    <Select
-                        labelId="demo-simple-select-standard-label"
-                        id="demo-simple-select-standard"
-                        value={'en'}
-                        onChange={() => {}}
-                        label="Language"
-                    >
-                        <MenuItem value={'en'}>English</MenuItem>
-                        <MenuItem value={'sv'}>Swedish</MenuItem>
-                    </Select>
-                </FormControl>
-            </Box> */}
-            <MainRoute />
-        </AppContainer>
+        <GradientWrapper>
+            <AppContainer>
+                <MainRoute />
+            </AppContainer>
+        </GradientWrapper>
     );
 };
 
 export default App;
+
+const GradientWrapper = styled(Box)({
+    position: 'relative',
+    overflow: 'hidden',
+    width: '100vw',
+    height: '100vh',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    background:
+        'radial-gradient(circle 80vh at 5% 5%, #98C040 -40%, #0000 ), radial-gradient(circle 80vh at 95% 95%, #5CAEDB -40%, #3B4248);',
+});
 
 const AppContainer = styled(Box)({
     height: '100vh',

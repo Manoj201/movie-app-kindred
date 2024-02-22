@@ -1,3 +1,7 @@
+interface FormvalueType {
+    movieName: string;
+    year: string;
+}
 interface Movie {
     Title: string;
     Year: string;
@@ -48,8 +52,11 @@ interface MovieSearchRequest {
 }
 
 interface MovieState {
+    searchFormValue: FormvalueType;
+
     movieList: Record<string, Movie[]>;
     totalResults: number;
+    curruntPage: string;
     movieListLoading: boolean;
     movieListError: boolean;
 
@@ -58,4 +65,4 @@ interface MovieState {
     movieDetailError: boolean;
 }
 
-export type { Movie, MovieState, MovieSearchResponse, MovieSearchRequest, MovieDetails };
+export type { Movie, MovieState, MovieSearchResponse, MovieSearchRequest, MovieDetails, FormvalueType };

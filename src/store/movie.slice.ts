@@ -1,10 +1,15 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
-import { MovieSearchResponse, MovieState, MovieSearchRequest, MovieDetails } from '@app-types/index';
+import { MovieSearchResponse, MovieState, MovieSearchRequest, MovieDetails, FormvalueType } from '@app-types/index';
 
 const initialState: MovieState = {
+    searchFormValue: {
+        movieName: '',
+        year: '',
+    },
     movieList: {},
     totalResults: 0,
+    curruntPage: '1',
     movieListLoading: false,
     movieListError: false,
 
@@ -17,7 +22,19 @@ const movieSlice = createSlice({
     name: 'movie',
     initialState,
     reducers: {
-        getMovieList: (state, _action: PayloadAction<MovieSearchRequest>) => {
+        setSerachFormValue: (state, action: PayloadAction<FormvalueType>) => {
+            state.searchFormValue = {
+                movieName: action.payload.movieName,
+                year: action.payload.year,
+            };
+        },
+
+        setCurruntPage: (state, action: PayloadAction<string>) => {
+            state.curruntPage = action.payload;
+        },
+
+        getMovieList: (state, action: PayloadAction<MovieSearchRequest>) => {
+            state.curruntPage = action.payload.page;
             state.movieListLoading = true;
             state.movieListError = false;
         },

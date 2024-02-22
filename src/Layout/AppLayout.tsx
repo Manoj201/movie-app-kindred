@@ -1,8 +1,19 @@
-import { Box, FormControl, Grid, InputLabel, MenuItem, Select, SelectChangeEvent, Typography } from '@mui/material';
+import {
+    Box,
+    Button,
+    FormControl,
+    Grid,
+    InputLabel,
+    MenuItem,
+    Select,
+    SelectChangeEvent,
+    Typography,
+} from '@mui/material';
 import { colors, labelSizes, labelWeights } from '@theme/index';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLocation, useNavigate } from 'react-router-dom';
+import HomeIcon from '@mui/icons-material/Home';
 
 const AppLayout: React.FC = () => {
     const {
@@ -10,21 +21,56 @@ const AppLayout: React.FC = () => {
         i18n: { changeLanguage, language },
     } = useTranslation();
 
+    const location = useLocation();
+    const navigate = useNavigate();
+
     return (
         <>
-            <Grid container justifyContent="center" sx={{ backgroundColor: colors.primary, padding: '30px' }}>
+            <Grid
+                container
+                justifyContent="center"
+                sx={{ backgroundColor: colors.dark, padding: '30px 30px 0px 30px' }}
+            >
                 <Grid item xs={12} lg={6}>
-                    <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                        <Typography
-                            sx={{
-                                color: colors.light,
-                                fontSize: labelSizes.header,
-                                fontWeight: labelWeights.bold,
-                                marginBottom: '20px',
-                            }}
-                        >
-                            {t('layout.header')}
-                        </Typography>
+                    <Box
+                        sx={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'space-between',
+                            paddingBottom: '20px',
+                        }}
+                    >
+                        <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+                            <Typography
+                                sx={{
+                                    color: colors.light,
+                                    fontSize: labelSizes.header,
+                                    fontWeight: labelWeights.bold,
+                                }}
+                            >
+                                {t('layout.header')}
+                            </Typography>
+                            {location.pathname !== '/movies' && (
+                                <Button
+                                    startIcon={<HomeIcon sx={{ color: colors.white }} />}
+                                    size="small"
+                                    sx={{
+                                        backgroundColor: colors.primary,
+                                        color: colors.light,
+                                        fontWeight: labelWeights.bold,
+                                        borderRadius: '20px',
+                                        width: '110px',
+                                        marginLeft: '20px',
+                                    }}
+                                    onClick={() => {
+                                        navigate('/movies', { replace: true });
+                                    }}
+                                >
+                                    {t('layout.home')}
+                                </Button>
+                            )}
+                        </Box>
+
                         <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
                             <InputLabel
                                 id="demo-simple-select-standard-label"
