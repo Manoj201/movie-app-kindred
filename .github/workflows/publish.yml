@@ -33,7 +33,7 @@ jobs:
               run: |
                   rm -rf node_modules
                   yarn
-                  yarn build-prod
+                  yarn build-prod && cp ./dist/index.html ./dist/404.html
             - name: Deploy React App
               uses: JamesIves/github-pages-deploy-action@v4
               with:
