@@ -7,7 +7,8 @@ import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import { movieActions } from '@store/movie.slice';
 import { RootState } from '@store/rootStore';
-import { FormvalueType } from '@app-types/index';
+import { FormvalueType, ToastType } from '@app-types/index';
+import Notification from '@components/notification/Notification.component';
 
 interface SearchPanelProps {}
 
@@ -21,7 +22,9 @@ const SearchPanel: React.FC<SearchPanelProps> = () => {
     const searchFormValues = useSelector((state: RootState) => state.movie.searchFormValue);
 
     const handleSearch = (latestFormValues: FormvalueType) => {
+        dispatch(movieActions.cleanupMovieList());
         if (latestFormValues.movieName !== '' || latestFormValues.year !== '') {
+            dispatch(movieActions.cleanupMovieList());
             dispatch(
                 movieActions.getMovieList({
                     search: latestFormValues.movieName,
@@ -29,18 +32,32 @@ const SearchPanel: React.FC<SearchPanelProps> = () => {
                     page: '1',
                 }),
             );
-        } else {
-            dispatch(movieActions.cleanupMovieList());
         }
     };
 
     const textChangeDebouncer = useMemo(() => debounce(handleSearch, 500), []);
 
     const onChangeField = (event: React.ChangeEvent<HTMLInputElement>, fieldName: string) => {
+        if (fieldName === 'year') {
+            const year = event.target.value;
+            if (isNaN(Number(year))) {
+                return;
+            }
+            if (year.length > 4) {
+                Notification('Oops!', 'Invalid Year Input', ToastType.Warn);
+                return;
+            }
+        }
+
         const updatedFormValues: FormvalueType = { ...searchFormValues, [fieldName]: event.target.value };
-        //
         dispatch(movieActions.setSerachFormValue(updatedFormValues));
-        textChangeDebouncer(updatedFormValues);
+
+        if (
+            updatedFormValues.movieName !== '' &&
+            (updatedFormValues.year === '' || updatedFormValues.year.length === 4)
+        ) {
+            textChangeDebouncer(updatedFormValues);
+        }
     };
 
     const handelClear = () => {
@@ -71,6 +88,7 @@ const SearchPanel: React.FC<SearchPanelProps> = () => {
                         onChange={(event: React.ChangeEvent<HTMLInputElement>) => onChangeField(event, 'year')}
                         autoComplete="off"
                         value={searchFormValues.year}
+                        disabled={searchFormValues.movieName === ''}
                     />
                 </Grid>
                 <Grid item xs>

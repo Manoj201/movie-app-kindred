@@ -26,12 +26,12 @@ const MovieList: React.FC = () => {
         <>
             <Grid
                 container
-                spacing={2}
                 sx={{
-                    height: `${height - 250}px`,
+                    maxHeight: `${height - 250}px`,
                     overflowY: 'scroll',
                     marginTop: '10px',
                     width: '100%',
+                    display: 'flex',
                 }}
             >
                 {movieList[`${currentPage}`]?.map((movie, index) => (
@@ -41,6 +41,7 @@ const MovieList: React.FC = () => {
                         xs={12}
                         lg={6}
                         sx={(theme: Theme) => ({
+                            padding: '10px',
                             width: '100% !important',
                             [theme.breakpoints.only('xs')]: {
                                 marginRight: '20px',

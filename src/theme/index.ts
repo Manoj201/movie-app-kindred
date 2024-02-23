@@ -40,7 +40,7 @@ export const baseTheme = createTheme({
                 root: {
                     color: colors.white,
                     '&.Mui-focused': {
-                        color: colors.white, // replace 'desired color' with the color you want
+                        color: colors.white,
                     },
                 },
             },
@@ -49,16 +49,19 @@ export const baseTheme = createTheme({
             styleOverrides: {
                 root: {
                     borderRadius: '5px',
-
                     '.MuiOutlinedInput-notchedOutline': {
                         borderColor: colors.white,
                     },
                     '.MuiInputBase-input': {
                         color: colors.white,
                     },
-
                     '& input': {
                         color: colors.white,
+                    },
+                    '&.Mui-disabled': {
+                        '.MuiOutlinedInput-notchedOutline': {
+                            borderColor: colors.secondary,
+                        },
                     },
                 },
             },
