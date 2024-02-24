@@ -24,7 +24,6 @@ const SearchPanel: React.FC<SearchPanelProps> = () => {
     const handleSearch = (latestFormValues: FormvalueType) => {
         dispatch(movieActions.cleanupMovieList());
         if (latestFormValues.movieName !== '' || latestFormValues.year !== '') {
-            dispatch(movieActions.cleanupMovieList());
             dispatch(
                 movieActions.getMovieList({
                     search: latestFormValues.movieName,
@@ -52,11 +51,17 @@ const SearchPanel: React.FC<SearchPanelProps> = () => {
         const updatedFormValues: FormvalueType = { ...searchFormValues, [fieldName]: event.target.value };
         dispatch(movieActions.setSerachFormValue(updatedFormValues));
 
+        // If user type movie name and year then we need to call the api
         if (
             updatedFormValues.movieName !== '' &&
             (updatedFormValues.year === '' || updatedFormValues.year.length === 4)
         ) {
             textChangeDebouncer(updatedFormValues);
+        }
+
+        // If user clear the movie name then we need to clear the movie list and year field
+        if (updatedFormValues.movieName === '') {
+            handelClear();
         }
     };
 
