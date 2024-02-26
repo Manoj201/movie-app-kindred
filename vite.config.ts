@@ -9,6 +9,11 @@ export default defineConfig(({ command }) => {
         plugins: [tsconfigPaths(), react()],
         envDir: './env',
         base: '/',
+        test: {
+            environment: 'jsdom',
+            globals: true,
+            setupFiles: './src/tests/setup.ts',
+        },
     };
 
     if (command !== 'serve') {

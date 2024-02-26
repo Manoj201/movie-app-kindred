@@ -7,7 +7,7 @@ import { ToastContainer } from 'react-toastify';
 
 const App: React.FC = () => {
     return (
-        <GradientWrapper>
+        <GradientWrapper data-testid="app-root">
             <AppContainer>
                 <MainRoute />
                 <ToastContainer
